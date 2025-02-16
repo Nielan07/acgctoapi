@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('checks_claimeds', function (Blueprint $table) {
             $table->id();
+            $table->date('tran_date');
+            $table->integer('fund_cluster_id');
+            $table->integer('bank_id');
+            $table->integer('encoded_by_id');
             $table->timestamps();
         });
     }

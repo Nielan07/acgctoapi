@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Bank;
 use Illuminate\Http\Request;
+use App\Http\Requests\BankRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\BankResource;
 
 class BankController extends Controller
 {
@@ -12,23 +15,15 @@ class BankController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return Bank::all();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BankRequest $request)
     {
-        //
+        Bank::create($request->validated());
     }
 
     /**
@@ -36,23 +31,16 @@ class BankController extends Controller
      */
     public function show(Bank $bank)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Bank $bank)
-    {
-        //
+        return new BankResource($bank);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Bank $bank)
+    public function update(BankRequest $request, Bank $bank)
     {
-        //
+        $bank->update($request->validated());
+        $bank->fresh();
     }
 
     /**
@@ -60,6 +48,6 @@ class BankController extends Controller
      */
     public function destroy(Bank $bank)
     {
-        //
+        $bank->delete();
     }
 }

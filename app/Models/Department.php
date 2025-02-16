@@ -8,15 +8,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Department extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+    // public $timestamps = false;
 
     protected $fillable = [
-        'id', 'code', 'name', 'created_by', 'created_at', 'history'
-    ];
+        'code', 'name'];
 
     public static function getAllowedFilters()
     {
         return [
             'code', 'name'];
+    }
+
+    public static function getAllowedSorts()
+    {
+        return [
+            'id', 'code', 'name'];
+    }
+
+    public function check_claimed_details()
+    {
+        return $this->hasMany(CheckClaimedDetail::class);
     }
 }

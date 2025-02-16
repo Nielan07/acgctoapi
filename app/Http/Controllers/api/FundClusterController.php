@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\FundCluster;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\FundClusterRequest;
 
 class FundClusterController extends Controller
 {
@@ -12,23 +14,15 @@ class FundClusterController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return FundCluster::all();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FundClusterRequest $request)
     {
-        //
+        FundCluster::create($request->validated());
     }
 
     /**
@@ -36,23 +30,16 @@ class FundClusterController extends Controller
      */
     public function show(FundCluster $fundCluster)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(FundCluster $fundCluster)
-    {
-        //
+        return $fundCluster;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FundCluster $fundCluster)
+    public function update(FundClusterRequest $request, FundCluster $fundCluster)
     {
-        //
+        $fundCluster->update($request->validated());
+        $fundCluster->fresh();
     }
 
     /**
@@ -60,6 +47,6 @@ class FundClusterController extends Controller
      */
     public function destroy(FundCluster $fundCluster)
     {
-        //
+        $fundCluster->delete();
     }
 }
