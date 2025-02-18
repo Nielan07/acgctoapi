@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('check_claimed_details', function (Blueprint $table) {
+        Schema::create('checks_claimed_details', function (Blueprint $table) {
             $table->id();
             $table->integer('check_claimed_id');
             $table->date('check_date');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('check_claimed_details');
+        Schema::dropIfExists('checks_claimed_details');
     }
 };

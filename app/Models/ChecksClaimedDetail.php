@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class CheckClaimedDetail extends Model
+class ChecksClaimedDetail extends Model
 {
     use HasFactory;
-    // public $timestamps = false;
 
     protected $fillable = [
         'check_claimed_id', 'check_date', 'check_number', 'db_payroll_number', 'ors_burs_number', 'department_id', 'payee', 'nature_of_payment', 'amount'
@@ -27,9 +26,9 @@ class CheckClaimedDetail extends Model
             'check_claimed_id', 'check_date', 'check_number', 'department_id', 'payee', 'nature_of_payment'];
     }
 
-    public function check_claimed()
+    public function checks_claimed()
     {
-        return $this->belongsTo(CheckClaimed::class);
+        return $this->belongsTo(ChecksClaimed::class, 'check_claimed_id');
     }
 
     public function department()

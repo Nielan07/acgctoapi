@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Reports;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,7 +22,10 @@ class ChecksClaimedReportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'fund_cluster_id' => 'required|integer',
+            'bank_id' => 'required|integer',
+            'from_date' => 'required|date',
+            'to_date' => 'required|date',
         ];
     }
 }

@@ -25,8 +25,8 @@ class Department extends Model
             'id', 'code', 'name'];
     }
 
-    public function check_claimed_details()
+    public function checks_claimed_details()
     {
-        return $this->hasMany(CheckClaimedDetail::class);
+        return $this->hasMany(ChecksClaimedDetail::class);
     }
 }
